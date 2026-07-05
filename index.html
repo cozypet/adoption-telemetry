@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>The Model Had No Name: What Two Months of Blind Traffic Actually Prove</title>
+<style>
+body { max-width: 740px; margin: 0 auto; padding: 40px 20px; font-family: Georgia, serif; font-size: 18px; line-height: 1.65; color: #141413; background: #ffffff; }
+h1 { font-size: 34px; line-height: 1.2; }
+h2 { font-size: 26px; margin-top: 44px; }
+p.opener { border-left: 3px solid #d97757; padding-left: 16px; font-weight: bold; }
+img { max-width: 100%; height: auto; display: block; margin: 28px auto; }
+em.sub { font-size: 20px; color: #5c5b55; }
+</style>
+</head>
+<body>
+
+<h1>The Model Had No Name: What Two Months of Blind Traffic Actually Prove</h1>
+<p><em class="sub">Benchmarks lost the argument in the first half of 2026. Here is the signal that replaced them, what it certifies, and where it quietly lies.</em></p>
+
+<p>For two months this spring, the most consequential model evaluation of 2026 ran with no name attached. Developers routed hundreds of billions of tokens a day through an anonymous endpoint on OpenRouter called Owl Alpha, and by late June it sat in the top three by call volume inside three different coding agent platforms. No benchmarks. No brand. No launch post. Then Meituan, the Beijing food delivery company, stepped forward and claimed it as LongCat-2.0.</p>
+
+<p>The reveal is the least interesting part. The interesting part is the selection mechanism, because thousands of engineering teams picked a model on production behavior alone, before marketing could touch the decision. This is an investigation into what that kind of evidence proves, and where it lies to you.</p>
+
+<h2>Before we start!</h2>
+<p>🦸🏻‍♀️ If this helps you ship better AI systems:</p>
+<ul>
+<li>👏 Clap 50 times (yes, you can!) — Medium's algorithm favors this, increasing visibility to others who then discover the article.</li>
+<li>🔔 Follow me on <a href="https://medium.com/@han.heloir">Medium</a>, <a href="https://www.linkedin.com/in/hanheloiryan/">LinkedIn</a> and <a href="https://medium.com/@han.heloir/about">subscribe</a> to get my latest article.</li>
+</ul>
+
+<h2>The Week the Leaderboard Stopped Mattering</h2>
+
+<p class="opener">The most trusted model evaluation of 2026 was not designed by anyone, and that is exactly why people trusted it.</p>
+
+<p>Start with the problem the industry stopped saying out loud. Vendor benchmark tables have become a chart selection exercise, and the same checkpoint can be framed as frontier or mid tier depending on which suite makes the press image. LongCat-2.0 is a clean example: it posts 59.5 on SWE-bench Pro, a software engineering benchmark where that score edges out GPT-5.5 at 58.6, while trailing far behind the same rivals on instruction following and graduate level reasoning suites.</p>
+
+<p>Both numbers are true. The vendor decides which one you see first, and every lab now ships a spiky model that is near frontier on the benchmarks that flatter it. When every launch chart shows a winner, the chart stops carrying information, which is roughly where senior teams landed by spring.</p>
+
+<p>What replaced it was not a better benchmark. It was telemetry. Routers like OpenRouter sit in front of dozens of models, watch which endpoints production agents actually call, and publish the traffic: selection by revealed preference, measured in tokens, aggregated across thousands of teams who never coordinated on a methodology.</p>
+
+<p>That flip is the story of the first half of 2026, and it carries two consequences this article walks through. The flip has a winner, and it is the Chinese open weight ecosystem. And the new signal lies differently than the old one did, which means you need a new reading skill, not less skepticism.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/01.png" alt="Two ways to pick a model: the leaderboard regime against the telemetry regime">
+<img src="https://cozypet.github.io/adoption-telemetry/images/02.png" alt="One checkpoint, two stories: the same model reads frontier or mid tier depending on the chart">
+
+<h2>The Blind Experiment</h2>
+
+<p class="opener">Owl Alpha never published a benchmark, and it still recruited more production traffic than any launch post that did.</p>
+
+<p>Stealth listings are now standard practice. A lab puts an unreleased model on OpenRouter under a codename, with nothing attached but an endpoint, and collects real usage before committing to a launch. Meituan's preview entered public testing on April 24 and appeared on the router four days later, and for the next two months the only information anyone had was how it behaved.</p>
+
+<p>The behavior compounded. By June the endpoint was processing roughly 10.1 trillion tokens a month, about 559 billion a day, and volume was growing 242 percent month over month, a curve that means teams came back after the first week rather than sampling and leaving. One outlet reports the monthly figure as 11 trillion instead, a variance worth remembering for later.</p>
+
+<p>Ranked by monthly call volume, the anonymous model held first place inside the Hermes Agent workspace, second inside Claude Code, and third across OpenClaw deployments. Read that carefully. Those are three differently built agent harnesses, each with its own tool protocols and loop structure, and an unnamed endpoint outcompeted branded frontier models inside all three.</p>
+
+<p>On June 30 Meituan claimed it: LongCat-2.0, a mixture of experts model with 1.6 trillion total parameters that activates roughly 48 billion per token, adapting between 33 billion and 56 billion with query complexity, carrying a native 1 million token context window, announced under the permissive MIT license.</p>
+
+<p>Then comes the gap this investigation cares about. Five days after the announcement, both the GitHub and Hugging Face repositories still read model weights coming soon, with no date attached. Four days before the announcement, Zhipu shipped GLM 5.2 with weights you could download that afternoon. In this market the checkpoint is table stakes, and so far Meituan has shipped a license and an endpoint.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/03.png" alt="Timeline of the blind run from the April preview to weights still absent in July">
+<img src="https://cozypet.github.io/adoption-telemetry/images/04.png" alt="Owl Alpha ranked by call volume across three agent platforms">
+
+<h2>How to Read Adoption Telemetry</h2>
+
+<p class="opener">Traffic does not measure how smart a model is. It measures whether the model breaks your loop, and that is the more useful question.</p>
+
+<p>Be precise about what ten trillion blind tokens certify. An agent harness is an unforgiving integration test: tool calls must parse every time, diffs must apply, multi step loops must run for hours without collapsing into repetition. A model that holds top three across three independently designed harnesses has passed a compatibility exam no leaderboard can simulate, at a scale no lab could afford to fake.</p>
+
+<p>So adoption telemetry is harness telemetry. It tells you the model slots into existing execution and verification layers and keeps working under production load, which for agentic work is most of the decision.</p>
+
+<p>Now be equally precise about what it cannot certify, starting with quality. Independent spot checks placed LongCat-2.0 visibly behind the closed frontier and closer to the previous generation's strong mid tier, roughly between DeepSeek's fast and pro variants. Call volume rewards good enough and cheap. It does not reward best, and it never has.</p>
+
+<p>Then come the thumbs on the scale. The first is price zero: OpenRouter served the stealth model free, with daily quotas of 5 to 10 million tokens per user, so a large share of that revealed preference happened at no cost to the people revealing it, while the real payment flowed back to Meituan as agent trace data. Willingness to route is not willingness to pay.</p>
+
+<p>The second is population skew. Teams that pick models through a router are, by construction, unusually price sensitive and switching tolerant, while enterprises pinned to a single vendor contract never enter the sample. Treat that as a reasoned inference rather than a measured fact, because nobody publishes router demographics, but do not pretend the sample is the industry.</p>
+
+<p>The third is that the numbers themselves wobble. Monthly volume is reported anywhere from 10.1 to 11 trillion tokens depending on the outlet, and published cumulative snapshots conflict outright with the monthly series. Single source telemetry deserves exactly the suspicion you finally learned to give single vendor benchmarks.</p>
+
+<p>So before you repeat a traffic number, interrogate it the way you would a latency claim. Who paid for the tokens. Who is in the routing population. What price change is scheduled. Does the growth survive the promo ending. Can the volume be decomposed into retained workloads versus one week experiments. Any chart that cannot answer those is marketing wearing a lab coat.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/05.png" alt="What blind traffic proves and what it cannot prove">
+<img src="https://cozypet.github.io/adoption-telemetry/images/06.png" alt="Three distortions in the signal and the correction each demands">
+
+<h2>The Map the Telemetry Drew</h2>
+
+<p class="opener">There is no best Chinese open model, and the teams winning with them stopped looking for one.</p>
+
+<p>Read the traffic and download data across the whole ecosystem and a map appears, with a different lab holding each axis. Zhipu's GLM 5.2 is the reigning open release: it landed on June 26 within about a percentage point of Opus 4.8 on a closely watched agentic benchmark at roughly a fifth of the cost, its router traffic climbed faster after launch than DeepSeek V4's did in April, and, decisively, its weights are downloadable today.</p>
+
+<p>DeepSeek V4 and V4-Pro hold the price floor and the coding mindshare, with permanent pricing at $0.435 per million input tokens and $0.87 per million output, numbers low enough to anchor what everyone else can charge. The market largely read V4 as a chat event, which is exactly why the agentic crown was available for someone else to take this quarter.</p>
+
+<p>Alibaba's Qwen owns ecosystem gravity: it passed Llama in cumulative downloads with more than 700 million by January, and Alibaba alone hosts more derivative models than Google and Meta combined, which makes Qwen the default base for fine tuning. Moonshot's Kimi owns tool use, with K2.5 posting 78.4 on the BrowseComp agentic browsing benchmark, the best score among all tested models including GPT-5.2. Huawei's openPangu 2.0 holds the sovereignty rung as the only family trained without Nvidia hardware and fully hostable on non US infrastructure.</p>
+
+<p>LongCat-2.0 enters that map as the largest announced open checkpoint at 1.6 trillion parameters, with adoption proof instead of benchmark proof, and with weights promised rather than shipped. Its differentiation is real. So is its asterisk.</p>
+
+<p>Be honest about where the closed Western frontier still wins, because the telemetry shows that too: general reasoning, where the best closed model holds roughly a 36 point Elo lead over the best Chinese one, plus long context reliability and prose quality. The consequence is that serious stacks stopped picking a model and started routing: coding to one family, tool orchestration to another, hard reasoning to a closed endpoint where it still earns its premium.</p>
+
+<p>Follow that consequence one step further and you arrive somewhere familiar. When models become interchangeable components, the durable value moves to the router, the harness, and the verification around them. The layer that discovered Owl Alpha is the same layer that now captures the margin.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/07.png" alt="The Chinese open model landscape by the axis each lab wins">
+<img src="https://cozypet.github.io/adoption-telemetry/images/08.png" alt="Workloads routed across specialized models with value accruing at the routing layer">
+
+<h2>The Demand Curve Nobody Prints</h2>
+
+<p class="opener">Part of that ten trillion token curve is not admiration. It is exit planning.</p>
+
+<p>The other force behind the traffic is not in any model card. In late June, Anthropic withdrew its newest frontier models after a government order, and OpenAI limited access to GPT-5.6 following a government request. Whatever your politics, if your product depends on a rented endpoint, those two headlines converted model choice into counterparty risk.</p>
+
+<p>Weights on disks you control cannot be repriced, deprecated, or revoked, by a vendor or by a regulator. For continuity planning, an open checkpoint became the conservative option this quarter, independent of any capability delta, and some fraction of the surge toward open models is exactly that calculation running at industry scale.</p>
+
+<p>Hold both readings at once, because both are true. Regulatory fear is a distortion when you are trying to read quality out of the traffic, and it is simultaneously a durable, rational demand driver that will outlast this news cycle. Keep the two separated in your own analysis, and be suspicious of anyone who collapses them into one story.</p>
+
+<p>The severe version of this logic is a ladder. Renting a closed endpoint leaves everything revocable. Open weights served on rented Nvidia hardware secure the model but not the compute. Open weights on hardware you own secure both, at full operational cost. And the top rung, training and serving end to end on domestic accelerators, is precisely what Meituan claims for LongCat-2.0, the first trillion parameter model to make that claim. Each rung buys independence and charges a toll.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/09.png" alt="The sovereignty ladder from rented endpoint to domestic end to end">
+<img src="https://cozypet.github.io/adoption-telemetry/images/10.png" alt="Revocation exposure at each tier of the stack">
+
+<h2>What to Do with This on Monday</h2>
+
+<p class="opener">The correct response to the best evaluation signal of the year is to distrust it professionally.</p>
+
+<p>Start by giving traffic charts the adversarial reading you give benchmark tables. Ask who paid for the tokens, which population routed them, and what the curve looks like after promotional pricing ends. A number that arrives without those answers is an advertisement.</p>
+
+<p>Second, never run build versus buy math on promised weights. An announcement and an artifact are different objects, and five days into the loudest open release of the summer you still could not download a single tensor of it. Gate the decision on files in your object store, not on a license name in a press cycle.</p>
+
+<p>Third, reproduce the only transferable part of the experiment inside your own stack. Shortlist two or three candidates, hide them behind neutral endpoint names, route two weeks of real workload through them, and score loop survival, tool call parse rates, and rework instead of impressions. Harness fit is the one thing public telemetry genuinely certifies, and it certifies it for someone else's harness, not yours.</p>
+
+<p>Finally, know when a spiky open model earns a routing slot. High volume, well specified coding and tool execution where per token cost dominates is exactly where it belongs. Work that leans on the general reasoning gap, compliance surfaces you cannot route around, or paths where a revoked endpoint takes your product down with it are where you keep paying the closed premium, deliberately.</p>
+
+<p>The most credible evaluation of 2026 so far was two months of production traffic choosing a model that had no name, and even that signal needed an audit before you could trust it. The lesson is not that traffic beats benchmarks. The lesson is that every signal is produced by someone, and the reading skill that compounds is asking who produced this one, and what it cost them to show it to you.</p>
+
+<img src="https://cozypet.github.io/adoption-telemetry/images/11.png" alt="Five steps to run a blind model trial in your own harness">
+<img src="https://cozypet.github.io/adoption-telemetry/images/12.png" alt="Four gates to pass before an open model earns a build decision">
+
+<h2>Credits &amp; Further Reading</h2>
+<ul>
+<li><a href="https://x.com/Meituan_LongCat/status/2071783587205308721">Meituan's LongCat-2.0 announcement thread</a>: the official specification and the vendor benchmark set.</li>
+<li><a href="https://venturebeat.com/technology/meituan-open-sources-longcat-2-0-the-1-6t-near-frontier-agentic-coding-model-thats-been-leading-openrouter-trained-entirely-on-chinese-chips">VentureBeat on the reveal</a>: source for the 10.1 trillion monthly token figure and the missing weights.</li>
+<li><a href="https://decrypt.co/372579/longcat-2-0-meituan-ai-stealth-model-openrouter">Decrypt's hands on read</a>: independent quality placement and the pricing breakdown.</li>
+<li><a href="https://www.cnbc.com/2026/06/26/china-zhipu-z-ai-open-source-anthropic-openai.html">CNBC on GLM 5.2 and the access squeeze</a>: the competitive and regulatory backdrop.</li>
+<li><a href="https://www.technologyreview.com/2026/02/12/1132811/whats-next-for-chinese-open-source-ai/">MIT Technology Review on Chinese open source</a>: the download crossover and the ecosystem trajectory.</li>
+<li><a href="https://news.ycombinator.com/item?id=48727116">The Hacker News thread on LongCat-2.0</a>: the weights skepticism and the hosting math happening in the wild.</li>
+<li><a href="https://inferencehub.org/blog/chinese-frontier-open-source-ai-models-2026/">Inference Hub's landscape comparison</a>: the axis by axis map, including where closed models still lead.</li>
+</ul>
+
+</body>
+</html>
